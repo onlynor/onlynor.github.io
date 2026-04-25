@@ -19,15 +19,15 @@
   <meta name="author" content="Mystic Raven">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文总结了使用 Hexo 静态博客框架、Fluid 主题以及 GitHub Pages 托管服务的完整搭建流程。旨在帮助新手快速搭建起一个专业、美观、可定制的个人博客。   文章来源   流程概览：从零到上线整个搭建过程可以分为四个主要阶段：  环境准备：安装必备软件，创建 GitHub 仓库。 Hexo 初始化：安装 Hexo 框架，配置站点信息。 主题与内容：安装 Fluid 主题，配置图片">
+    <meta name="description" content="背景使用 Hexo + Fluid 主题搭建博客后，最初的部署方案是 hexo deploy，通过 hexo-deployer-git 插件自动推送生成文件到 GitHub Pages。 后来改为手动管理 public&#x2F; 目录的 git 仓库，直接推送静态文件。这个过程中踩了不少坑，最终形成了一套更稳定的提交方案。 最初的问题：hexo deploy 的局限hexo deploy 本质是把 pub">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客搭建全流程总结托管github">
-<meta property="og:url" content="http://onlynor.github.io/posts/blog_launch/index.html">
+<meta property="og:title" content="Hexo 博客提交工作流优化">
+<meta property="og:url" content="http://onlynor.github.io/posts/Hexo%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="onlynor">
-<meta property="og:description" content="本文总结了使用 Hexo 静态博客框架、Fluid 主题以及 GitHub Pages 托管服务的完整搭建流程。旨在帮助新手快速搭建起一个专业、美观、可定制的个人博客。   文章来源   流程概览：从零到上线整个搭建过程可以分为四个主要阶段：  环境准备：安装必备软件，创建 GitHub 仓库。 Hexo 初始化：安装 Hexo 框架，配置站点信息。 主题与内容：安装 Fluid 主题，配置图片">
+<meta property="og:description" content="背景使用 Hexo + Fluid 主题搭建博客后，最初的部署方案是 hexo deploy，通过 hexo-deployer-git 插件自动推送生成文件到 GitHub Pages。 后来改为手动管理 public&#x2F; 目录的 git 仓库，直接推送静态文件。这个过程中踩了不少坑，最终形成了一套更稳定的提交方案。 最初的问题：hexo deploy 的局限hexo deploy 本质是把 pub">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-11T09:00:09.000Z">
-<meta property="article:modified_time" content="2026-04-25T14:28:06.916Z">
+<meta property="article:published_time" content="2026-04-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-25T15:23:21.880Z">
 <meta property="article:author" content="Mystic Raven">
 <meta property="article:tag" content="GitHub Pages">
 <meta property="article:tag" content="Hexo">
@@ -35,7 +35,7 @@
   
   
   
-  <title>博客搭建全流程总结托管github - onlynor</title>
+  <title>Hexo 博客提交工作流优化 - onlynor</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="博客搭建全流程总结托管github"></span>
+            <span id="subtitle" data-typed-text="Hexo 博客提交工作流优化"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-11-11 17:00" pubdate>
-          2025年11月11日 下午
+        <time datetime="2026-04-25 00:00" pubdate>
+          2026年4月25日 凌晨
         </time>
       </span>
     
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          1.5k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          18 分钟
+          13 分钟
         
       </span>
     
@@ -272,172 +272,70 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">博客搭建全流程总结托管github</h1>
+            <h1 id="seo-header">Hexo 博客提交工作流优化</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>本文总结了使用 Hexo 静态博客框架、Fluid 主题以及 GitHub Pages 托管服务的完整搭建流程。旨在帮助新手快速搭建起一个专业、美观、可定制的个人博客。</p>
-</blockquote>
+                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>使用 Hexo + Fluid 主题搭建博客后，最初的部署方案是 <code>hexo deploy</code>，通过 <code>hexo-deployer-git</code> 插件自动推送生成文件到 GitHub Pages。</p>
+<p>后来改为手动管理 <code>public/</code> 目录的 git 仓库，直接推送静态文件。这个过程中踩了不少坑，最终形成了一套更稳定的提交方案。</p>
+<h2 id="最初的问题：hexo-deploy-的局限"><a href="#最初的问题：hexo-deploy-的局限" class="headerlink" title="最初的问题：hexo deploy 的局限"></a>最初的问题：hexo deploy 的局限</h2><p><code>hexo deploy</code> 本质是把 <code>public/</code> 的内容推送到远程仓库。它能用，但有几个问题：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">文章来源</a></li>
+<li>每次部署都要重新构建并推送整个站点</li>
+<li>推送过程不透明，出问题不好排查</li>
+<li>token 配置在 <code>_config.yml</code> 里，有安全风险</li>
 </ul>
-<hr>
-<h2 id="流程概览：从零到上线"><a href="#流程概览：从零到上线" class="headerlink" title="流程概览：从零到上线"></a>流程概览：从零到上线</h2><p>整个搭建过程可以分为四个主要阶段：</p>
-<ol>
-<li><strong>环境准备</strong>：安装必备软件，创建 GitHub 仓库。</li>
-<li><strong>Hexo 初始化</strong>：安装 Hexo 框架，配置站点信息。</li>
-<li><strong>主题与内容</strong>：安装 Fluid 主题，配置图片资源管理。</li>
-<li><strong>部署上线</strong>：配置 Git 部署，发布到 GitHub Pages。</li>
-</ol>
-<hr>
-<h2 id="阶段一：环境准备与-GitHub-仓库创建"><a href="#阶段一：环境准备与-GitHub-仓库创建" class="headerlink" title="阶段一：环境准备与 GitHub 仓库创建"></a>阶段一：环境准备与 GitHub 仓库创建</h2><h3 id="1-安装必备软件"><a href="#1-安装必备软件" class="headerlink" title="1. 安装必备软件"></a>1. 安装必备软件</h3><p>这是所有操作的基础，请确保以下软件已正确安装：</p>
-<table>
+<h2 id="改进方案：手动管理-public-的-git"><a href="#改进方案：手动管理-public-的-git" class="headerlink" title="改进方案：手动管理 public 的 git"></a>改进方案：手动管理 public 的 git</h2><p>把 git 仓库直接放在 <code>public/</code> 目录里，手动控制提交和推送：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑文章后</span><br>hexo g --force<br><span class="hljs-built_in">cd</span> public<br>git add -A<br>git commit -m <span class="hljs-string">&quot;update&quot;</span><br>git push<br></code></pre></td></tr></table></figure>
+
+<p>这样做的好处：</p>
+<ul>
+<li>完全掌控推送内容和时机</li>
+<li>可以查看 diff，确认改了什么</li>
+<li>不需要在 <code>_config.yml</code> 里配置 token</li>
+</ul>
+<h2 id="核心优化：用-hexo-g-–force-替代-hexo-clean"><a href="#核心优化：用-hexo-g-–force-替代-hexo-clean" class="headerlink" title="核心优化：用 hexo g –force 替代 hexo clean"></a>核心优化：用 hexo g –force 替代 hexo clean</h2><p>最初的习惯是 <code>hexo clean &amp;&amp; hexo g</code>，但 <code>hexo clean</code> 会<strong>删除整个 <code>public/</code> 目录</strong>，包括里面的 <code>.git</code>。每次 clean 之后都要重新 <code>git init</code> 和 <code>git remote add</code>，非常麻烦。</p>
+<p>看了 Hexo 源码确认，<code>hexo clean</code> 调用的是 <code>rmdir</code>，直接递归删除整个 public 文件夹：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// hexo clean 源码</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">deletePublicDir</span>(<span class="hljs-params">ctx</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">rmdir</span>(publicDir).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        ctx.<span class="hljs-property">log</span>.<span class="hljs-title function_">info</span>(<span class="hljs-string">&#x27;Deleted public folder.&#x27;</span>);<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>而 <code>hexo g --force</code> 会强制重新生成所有文件，但<strong>不会删除目录本身</strong>，<code>.git</code> 完好无损。</p>
+<p>所以最终方案是：<strong>永远不用 <code>hexo clean</code>，用 <code>hexo g --force</code> 代替。</strong></p>
+<p>如果只是 <code>db.json</code> 缓存出了问题，直接删 <code>db.json</code> 就行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> db.json<br>hexo g<br></code></pre></td></tr></table></figure>
+
+<h2 id="完整工作流"><a href="#完整工作流" class="headerlink" title="完整工作流"></a>完整工作流</h2><p>日常写文章的完整流程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 新建或编辑文章</span><br><span class="hljs-comment"># 文件位置：source/_posts/xxx.md</span><br><br><span class="hljs-comment"># 2. 本地预览（可选）</span><br>hexo s<br><span class="hljs-comment"># 访问 http://localhost:4000</span><br><br><span class="hljs-comment"># 3. 生成并推送</span><br>hexo g --force<br><span class="hljs-built_in">cd</span> public<br>git add -A<br>git commit -m <span class="hljs-string">&quot;update&quot;</span><br>git push<br></code></pre></td></tr></table></figure>
+
+<h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="Steam-劫持-SSH"><a href="#Steam-劫持-SSH" class="headerlink" title="Steam++ 劫持 SSH"></a>Steam++ 劫持 SSH</h3><p>Steam++ 会修改 hosts 文件，把 <code>github.com</code> 指向 <code>127.0.0.1</code>。浏览器通过本地代理能正常访问 GitHub，但 SSH 端口 22 没人监听，导致 <code>git push</code> 报错：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">ssh: <span class="hljs-keyword">connect</span> <span class="hljs-keyword">to</span> host github.com port <span class="hljs-number">22</span>: <span class="hljs-keyword">Connection</span> refused<br></code></pre></td></tr></table></figure>
+
+<p><strong>解决</strong>：推送前关闭 Steam++，或关闭其 GitHub 加速功能。</p>
+<h3 id="config-yml-不提交"><a href="#config-yml-不提交" class="headerlink" title="_config.yml 不提交"></a>_config.yml 不提交</h3><p><code>_config.yml</code> 里有 GitHub token，不能提交到公开仓库。把它加入了 <code>.gitignore</code>，但换电脑时需要手动恢复配置。</p>
+<h2 id="最终方案总结"><a href="#最终方案总结" class="headerlink" title="最终方案总结"></a>最终方案总结</h2><table>
 <thead>
 <tr>
-<th align="left">软件</th>
-<th align="left">作用</th>
-<th align="left">检查命令</th>
+<th align="left">操作</th>
+<th align="left">命令</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left"><strong>Git</strong></td>
-<td align="left">版本控制，用于下载主题和部署到 GitHub。</td>
-<td align="left"><code>git --version</code></td>
+<td align="left">生成静态文件</td>
+<td align="left"><code>hexo g --force</code></td>
 </tr>
 <tr>
-<td align="left"><strong>Node.js</strong></td>
-<td align="left">Hexo 框架的运行环境。</td>
-<td align="left"><code>node -v</code> 和 <code>npm -v</code></td>
+<td align="left">推送到 GitHub</td>
+<td align="left"><code>cd public &amp;&amp; git add -A &amp;&amp; git commit -m &quot;update&quot; &amp;&amp; git push</code></td>
+</tr>
+<tr>
+<td align="left">本地预览</td>
+<td align="left"><code>hexo s</code></td>
+</tr>
+<tr>
+<td align="left">新建文章</td>
+<td align="left"><code>hexo new &quot;文章标题&quot;</code></td>
 </tr>
 </tbody></table>
-<blockquote>
-<p><strong>提示：</strong> 安装 Git 时，请务必配置好你的用户名和邮箱，这是 Git 提交记录的身份标识。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;你的GitHub用户名&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;你的GitHub邮箱&quot;</span><br></code></pre></td></tr></table></figure></blockquote>
-<h3 id="2-创建-GitHub-Pages-仓库"><a href="#2-创建-GitHub-Pages-仓库" class="headerlink" title="2. 创建 GitHub Pages 仓库"></a>2. 创建 GitHub Pages 仓库</h3><ol>
-<li>登录 GitHub，点击右上角 <code>+</code> 号，选择 <code>New repository</code>。</li>
-<li><strong>仓库命名规范：</strong> 必须命名为 <code>你的用户名.github.io</code>（例如：<code>onlynor.github.io</code>）。</li>
-<li>选择 <code>Public</code>（公开），勾选 <code>Add a README file</code>（添加 README 文件）。</li>
-<li>点击 <code>Create repository</code> 完成创建。</li>
-</ol>
-<hr>
-<h2 id="阶段二：Hexo-框架初始化与基础配置"><a href="#阶段二：Hexo-框架初始化与基础配置" class="headerlink" title="阶段二：Hexo 框架初始化与基础配置"></a>阶段二：Hexo 框架初始化与基础配置</h2><h3 id="1-安装-Hexo-并初始化项目"><a href="#1-安装-Hexo-并初始化项目" class="headerlink" title="1. 安装 Hexo 并初始化项目"></a>1. 安装 Hexo 并初始化项目</h3><p>在你的电脑上选择一个合适的目录（例如 <code>D:\Blogs</code>），执行以下命令：</p>
-<ol>
-<li><strong>全局安装 Hexo CLI：</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></table></figure></li>
-<li><strong>创建并初始化博客项目：</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init hexo-blog<br><span class="hljs-built_in">cd</span> hexo-blog<br>npm install<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="2-基础站点配置"><a href="#2-基础站点配置" class="headerlink" title="2. 基础站点配置"></a>2. 基础站点配置</h3><p>打开项目根目录下的主配置文件 <code>_config.yml</code>，进行以下关键修改：</p>
-<table>
-<thead>
-<tr>
-<th align="left">配置项</th>
-<th align="left">作用</th>
-<th align="left">建议值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>title</code></td>
-<td align="left">网站标题，显示在浏览器标签页。</td>
-<td align="left"><code>我的个人博客</code></td>
-</tr>
-<tr>
-<td align="left"><code>subtitle</code></td>
-<td align="left">网站副标题。</td>
-<td align="left"><code>技术分享与生活记录</code></td>
-</tr>
-<tr>
-<td align="left"><code>description</code></td>
-<td align="left">网站描述，利于 SEO。</td>
-<td align="left"><code>一个基于 Hexo 和 Fluid 主题的个人博客</code></td>
-</tr>
-<tr>
-<td align="left"><code>url</code></td>
-<td align="left"><strong>网站的最终访问地址（非常重要！）</strong></td>
-<td align="left"><code>https://你的用户名.github.io</code></td>
-</tr>
-<tr>
-<td align="left"><code>language</code></td>
-<td align="left">网站语言。</td>
-<td align="left"><code>zh-CN</code></td>
-</tr>
-<tr>
-<td align="left"><code>timezone</code></td>
-<td align="left">时区设置，确保文章时间正确。</td>
-<td align="left"><code>Asia/Shanghai</code></td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="阶段三：主题与内容管理"><a href="#阶段三：主题与内容管理" class="headerlink" title="阶段三：主题与内容管理"></a>阶段三：主题与内容管理</h2><h3 id="1-安装-Fluid-主题"><a href="#1-安装-Fluid-主题" class="headerlink" title="1. 安装 Fluid 主题"></a>1. 安装 Fluid 主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> themes<br>git <span class="hljs-built_in">clone</span> https://github.com/fluid-dev/hexo-theme-fluid.git fluid<br><span class="hljs-built_in">cd</span> ..<br></code></pre></td></tr></table></figure>
-
-<p>修改根目录下的 <code>_config.yml</code> 文件：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="2-图片资源管理"><a href="#2-图片资源管理" class="headerlink" title="2. 图片资源管理"></a>2. 图片资源管理</h3><p>启用资源文件夹，修改 <code>_config.yml</code>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
-<p>安装图片路径处理插件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-asset-image --save<br></code></pre></td></tr></table></figure>
-
-<p>使用方法：用 <code>hexo new &quot;文章标题&quot;</code> 新建文章后，将图片放入同名文件夹，在 Markdown 中直接引用：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">![<span class="hljs-string">图片描述</span>](<span class="hljs-link">文章标题/image.jpg</span>)<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-创建独立页面（如”关于”）"><a href="#3-创建独立页面（如”关于”）" class="headerlink" title="3. 创建独立页面（如”关于”）"></a>3. 创建独立页面（如”关于”）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new page <span class="hljs-string">&quot;about&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>编辑 <code>source/about/index.md</code>，在文件头部添加 <code>layout</code> 属性：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>title: 关于我<br>date: 2025-11-11 10:30:00<br><span class="hljs-section">layout: about</span><br><span class="hljs-section">---</span><br><br>这里是你的个人介绍、联系方式等内容。<br></code></pre></td></tr></table></figure>
-
-<h3 id="4-本地预览"><a href="#4-本地预览" class="headerlink" title="4. 本地预览"></a>4. 本地预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s<br></code></pre></td></tr></table></figure>
-
-<p>访问 <code>http://localhost:4000</code> 确认无误。</p>
-<hr>
-<h2 id="阶段四：部署上线与访问"><a href="#阶段四：部署上线与访问" class="headerlink" title="阶段四：部署上线与访问"></a>阶段四：部署上线与访问</h2><h3 id="1-安装部署插件"><a href="#1-安装部署插件" class="headerlink" title="1. 安装部署插件"></a>1. 安装部署插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-配置部署信息"><a href="#2-配置部署信息" class="headerlink" title="2. 配置部署信息"></a>2. 配置部署信息</h3><p>修改 <code>_config.yml</code>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/你的用户名/你的用户名.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="3-部署到-GitHub-Pages"><a href="#3-部署到-GitHub-Pages" class="headerlink" title="3. 部署到 GitHub Pages"></a>3. 部署到 GitHub Pages</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo deploy<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>关于 Personal Access Token (PAT)：</strong><br>GitHub 已弃用密码认证，你需要在 GitHub 账户设置中生成一个 PAT，部署时输入 PAT 即可完成认证。</p>
-</blockquote>
-<h3 id="4-访问你的博客"><a href="#4-访问你的博客" class="headerlink" title="4. 访问你的博客"></a>4. 访问你的博客</h3><p>部署成功后，等待 1-2 分钟，访问 <code>https://你的用户名.github.io</code>。</p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
-<thead>
-<tr>
-<th align="left">阶段</th>
-<th align="left">关键命令</th>
-<th align="left">关键文件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>初始化</strong></td>
-<td align="left"><code>hexo init</code></td>
-<td align="left"><code>_config.yml</code></td>
-</tr>
-<tr>
-<td align="left"><strong>主题</strong></td>
-<td align="left"><code>git clone</code></td>
-<td align="left"><code>theme: fluid</code></td>
-</tr>
-<tr>
-<td align="left"><strong>内容</strong></td>
-<td align="left"><code>hexo new</code></td>
-<td align="left"><code>source/_posts/</code></td>
-</tr>
-<tr>
-<td align="left"><strong>图片</strong></td>
-<td align="left"><code>npm install hexo-asset-image</code></td>
-<td align="left"><code>post_asset_folder: true</code></td>
-</tr>
-<tr>
-<td align="left"><strong>部署</strong></td>
-<td align="left"><code>hexo clean &amp;&amp; hexo deploy</code></td>
-<td align="left"><code>deploy:</code> 配置</td>
-</tr>
-</tbody></table>
-<p>下一步，可以根据 Fluid 主题的官方文档，修改 <code>themes/fluid/_config.yml</code> 进行个性化定制。</p>
+<p>不用 <code>hexo deploy</code>，不用 <code>hexo clean</code>，简单可控。</p>
 
                 
               </div>
@@ -464,8 +362,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>博客搭建全流程总结托管github</div>
-      <div>http://onlynor.github.io/posts/blog_launch/</div>
+      <div>Hexo 博客提交工作流优化</div>
+      <div>http://onlynor.github.io/posts/Hexo博客提交工作流优化/</div>
     </div>
     <div class="license-meta">
       
@@ -477,7 +375,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年11月11日</div>
+          <div>2026年4月25日</div>
         </div>
       
       
@@ -509,15 +407,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/Hexo%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BC%98%E5%8C%96/" title="Hexo 博客提交工作流优化">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo 博客提交工作流优化</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/posts/blog_launch/" title="博客搭建全流程总结托管github">
+                        <span class="hidden-mobile">博客搭建全流程总结托管github</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
