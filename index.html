@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <title>OnlyNor — A personal website</title>
+  <meta name="description" content="A personal website for sharing projects, technical blogs, and learning notes." />
+  <meta name="author" content="OnlyNor" />
+  <link rel="canonical" href="https://onlynor.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OnlyNor — A personal website" />
+  <meta property="og:description" content="A personal website for sharing projects, technical blogs, and learning notes." />
+  <meta property="og:url" content="https://onlynor.github.io/" />
+  <meta property="og:site_name" content="OnlyNor" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OnlyNor — A personal website" />
+  <meta name="twitter:description" content="A personal website for sharing projects, technical blogs, and learning notes." />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://rsms.me/" crossorigin />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+</head>
+<body>
+  <div class="bg-gradient" aria-hidden="true"></div>
+
+  <main class="page">
+    <section class="hero">
+      <h1 class="hero__name">OnlyNor</h1>
+      <p class="hero__subtitle">A simple navigation page</p>
+      <p class="hero__desc">A personal website for sharing projects, technical blogs, and learning notes.</p>
+    </section>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="btn btn--primary" href="/blog/">Blog</a>
+      <a class="btn" href="#" data-placeholder="Projects" aria-disabled="true">Projects</a>
+      <a class="btn btn--icon" href="https://github.com/onlynor" target="_blank" rel="noopener noreferrer">
+        GitHub
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 7h10v2H7zM7 11h10v2H7zM7 15h6v2H7z"/></svg>
+      </a>
+      <a class="btn" href="#" data-placeholder="About" aria-disabled="true">About</a>
+    </nav>
+
+    <!-- Reserved slots for future sections: Resume, Projects, Blog, AI Agent, Contact, Tech Stack -->
+    <section class="sections" aria-label="More">
+      <!-- future cards go here -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 OnlyNor</p>
+    <p class="footer__hint">Built with GitHub Pages.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
