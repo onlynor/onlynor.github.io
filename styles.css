@@ -1,34 +1,54 @@
 /* ==========================================================================
    OnlyNor — personal homepage
-   Dark, static, no third-party requests.
+   Typography-first layout in the Apple house style: system SF stack,
+   980px content column, pill buttons, chevron links, light/dark adaptive.
+   Static, self-contained, no third-party requests.
    ========================================================================== */
 
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 
-  --bg: #08080a;
-  --fg: #f5f6f8;
-  --muted: #b6b9c4;
-  --muted-2: #8a8e9c;
+  /* Light palette (Apple light: #fff / #f5f5f7 / #1d1d1f / #6e6e73) */
+  --bg: #ffffff;
+  --bg-alt: #f5f5f7;
+  --fg: #1d1d1f;
+  --fg-secondary: #6e6e73;
+  --accent: #0066cc;
+  --accent-hover: #0077ed;
+  --on-accent: #ffffff;
+  --card: #ffffff;
+  --hairline: rgba(0, 0, 0, 0.12);
+  --chip-bg: rgba(0, 0, 0, 0.05);
+  --nav-bg: rgba(251, 251, 253, 0.8);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 
-  --accent: #4c8dff;
-  --accent-hover: #3b7ae4;
-  --accent-ink: #05070f;
+  --content: 980px;
+  --nav-h: 48px;
 
-  --surface: rgba(255, 255, 255, 0.035);
-  --surface-hover: rgba(255, 255, 255, 0.07);
-  --border: rgba(255, 255, 255, 0.09);
-  --border-strong: rgba(255, 255, 255, 0.18);
+  /* SF Pro on Apple platforms, sensible fallbacks elsewhere. */
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", Roboto, Arial, sans-serif;
 
-  --radius: 12px;
-  --max-width: 760px;
+  --ease: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --transition: 220ms var(--ease);
+}
 
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --transition: 180ms var(--ease);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-alt: #101012;
+    --fg: #f5f5f7;
+    --fg-secondary: #86868b;
+    --accent: #2997ff;
+    --accent-hover: #56aaff;
+    --on-accent: #ffffff;
+    --card: #1d1d1f;
+    --hairline: rgba(255, 255, 255, 0.16);
+    --chip-bg: rgba(255, 255, 255, 0.11);
+    --nav-bg: rgba(22, 22, 23, 0.8);
+    --shadow: none;
+  }
 }
 
 *,
@@ -50,76 +70,41 @@ body {
   flex-direction: column;
   background-color: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.65;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
-/* --------------------------------------------------------------------------
-   Backdrop: wallpaper + scrim.
-   The scrim lives in ::after so the two layers can be tuned independently;
-   a single `background` shorthand cannot mix a solid colour between layers.
-   -------------------------------------------------------------------------- */
-
-.backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background-color: var(--bg);
-  background-image: image-set(
-    url("assets/wallpaper-960.avif") type("image/avif"),
-    url("assets/wallpaper-960.jpg") type("image/jpeg")
-  );
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-@media (min-width: 961px) {
-  .backdrop {
-    background-image: image-set(
-      url("assets/wallpaper.avif") type("image/avif"),
-      url("assets/wallpaper.jpg") type("image/jpeg")
-    );
-  }
-}
-
-.backdrop::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(5, 6, 12, 0.86) 0%, rgba(5, 6, 12, 0.62) 45%, rgba(5, 6, 12, 0.9) 100%),
-    radial-gradient(70% 55% at 20% 0%, rgba(76, 141, 255, 0.16), transparent 70%);
-}
-
-/* --------------------------------------------------------------------------
-   Layout
-   -------------------------------------------------------------------------- */
-
-.page {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: clamp(3.5rem, 11vh, 7rem) 1.5rem 0;
+main {
   flex: 1 0 auto;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.wrap--center {
+  text-align: center;
 }
 
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
-  padding: 0.6rem 1rem;
+  z-index: 20;
+  padding: 0.7rem 1.1rem;
   background: var(--accent);
-  color: var(--accent-ink);
-  font-weight: 600;
-  border-radius: 0 0 var(--radius) 0;
-  z-index: 10;
+  color: var(--on-accent);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0 0 12px 0;
 }
 
 .skip-link:focus {
@@ -127,183 +112,296 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Hero
+   Global nav — thin, sticky, translucent
    -------------------------------------------------------------------------- */
 
-.hero {
+.globalnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--nav-h);
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--hairline);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.globalnav__inner {
+  max-width: var(--content);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.hero__name {
-  font-size: clamp(2.75rem, 7vw, 3.75rem);
-  font-weight: 650;
-  letter-spacing: -0.03em;
-  margin: 0;
-  line-height: 1.05;
-  background: linear-gradient(175deg, #ffffff 0%, #b9c2d6 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero__subtitle {
-  margin: 0;
-  font-size: 1.0625rem;
-  font-weight: 500;
-  color: var(--fg);
-}
-
-.hero__desc {
-  margin: 0.4rem 0 0;
-  font-size: 1.0625rem;
-  color: var(--muted);
-  max-width: 52ch;
-  text-wrap: pretty;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
-}
-
-/* --------------------------------------------------------------------------
-   Buttons
-   -------------------------------------------------------------------------- */
-
-.btn {
-  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1.2rem;
-  font-size: 0.9375rem;
-  font-weight: 550;
-  font-family: inherit;
-  line-height: 1;
-  text-decoration: none;
-  color: var(--fg);
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  backdrop-filter: blur(6px);
-  transition: background-color var(--transition), border-color var(--transition),
-    transform var(--transition);
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.btn:hover {
-  background-color: var(--surface-hover);
-  border-color: var(--border-strong);
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-.btn--primary {
-  background-color: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
-}
-
-.btn--primary:hover {
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
-}
-
-.btn__arrow {
-  transition: transform var(--transition);
-}
-
-.btn:hover .btn__arrow {
-  transform: translateX(3px);
-}
-
-/* --------------------------------------------------------------------------
-   Sections & cards
-   -------------------------------------------------------------------------- */
-
-.sections {
-  margin-top: 3.5rem;
-}
-
-.section__title {
-  margin: 0 0 1rem;
-  font-size: 0.75rem;
+.globalnav__brand {
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted-2);
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  text-decoration: none;
 }
 
-.cards {
+.globalnav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 2.5rem);
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.875rem;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  height: 100%;
-  padding: 1.15rem 1.25rem;
+.globalnav__list a {
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  opacity: 0.82;
   text-decoration: none;
-  color: inherit;
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  backdrop-filter: blur(6px);
-  transition: background-color var(--transition), border-color var(--transition),
-    transform var(--transition);
+  transition: opacity var(--transition);
 }
 
-.card:hover {
-  background-color: var(--surface-hover);
-  border-color: var(--border-strong);
-  transform: translateY(-2px);
+.globalnav__list a:hover {
+  opacity: 1;
 }
 
-.card__title {
-  font-size: 1rem;
-  font-weight: 600;
+/* --------------------------------------------------------------------------
+   Hero — full-bleed image, dark by design in both colour schemes
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(620px, calc(100svh - var(--nav-h)));
+  padding: clamp(5rem, 14vh, 9rem) 22px;
+  text-align: center;
+  color: #f5f5f7;
+  background-color: #000;
+  overflow: hidden;
 }
 
-.card__desc {
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: var(--muted);
-  text-wrap: pretty;
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: image-set(
+    url("assets/wallpaper-960.avif") type("image/avif"),
+    url("assets/wallpaper-960.jpg") type("image/jpeg")
+  );
+  background-size: cover;
+  background-position: center 42%;
+  background-repeat: no-repeat;
 }
 
-.card__meta {
-  margin-top: auto;
-  padding-top: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--muted-2);
+@media (min-width: 735px) {
+  .hero__media {
+    background-image: image-set(
+      url("assets/wallpaper.avif") type("image/avif"),
+      url("assets/wallpaper.jpg") type("image/jpeg")
+    );
+  }
 }
 
-.empty {
+/* Scrim: a solid colour cannot sit in the middle of a background layer list,
+   so the wash lives here as its own gradient stack. */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.7) 100%),
+    radial-gradient(60% 60% at 50% 45%, rgba(0, 0, 0, 0.45), transparent 75%);
+}
+
+.hero__content {
+  max-width: 720px;
+}
+
+.hero__title {
   margin: 0;
-  padding: 1.15rem 1.25rem;
-  font-size: 0.9375rem;
-  color: var(--muted);
-  background-color: var(--surface);
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--radius);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 
-a {
+.hero__tagline {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.004em;
+  color: rgba(245, 245, 247, 0.86);
+}
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+.section {
+  padding: clamp(4.5rem, 11vw, 7.5rem) 0;
+  scroll-margin-top: var(--nav-h);
+}
+
+.section--alt {
+  background-color: var(--bg-alt);
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.022em;
   color: var(--accent);
 }
 
-.empty a:hover {
+.section__title {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.07143;
+  letter-spacing: -0.015em;
+}
+
+.section__lede {
+  margin: 0.6rem 0 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.004em;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
+   Feature card
+   -------------------------------------------------------------------------- */
+
+.feature {
+  margin-top: 2.75rem;
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  background-color: var(--card);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.feature__visual {
+  color: var(--fg);
+}
+
+.feature__visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.feature__text {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.52947;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.chips li {
+  padding: 0.3rem 0.75rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--fg-secondary);
+  background-color: var(--chip-bg);
+  border-radius: 980px;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons & chevron links
+   -------------------------------------------------------------------------- */
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.75rem;
+  margin: 2rem 0 0;
+}
+
+.cta--center,
+.hero .cta {
+  justify-content: center;
+}
+
+.cta--start {
+  margin-top: 1.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  padding: 12px 22px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.17648;
+  letter-spacing: -0.022em;
   text-decoration: none;
+  color: var(--on-accent);
+  background-color: var(--accent);
+  border-radius: 980px;
+  transition: background-color var(--transition);
+}
+
+.button:hover {
+  background-color: var(--accent-hover);
+}
+
+.chevron {
+  font-size: 17px;
+  line-height: 1.23536;
+  letter-spacing: 0.011em;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.chevron::after {
+  content: "\203A";
+  display: inline-block;
+  margin-left: 0.25em;
+  transition: transform var(--transition);
+}
+
+.chevron:hover {
+  text-decoration: underline;
+}
+
+.chevron:hover::after {
+  transform: translateX(2px);
+}
+
+.chevron--lg {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+}
+
+.chevron--onDark {
+  color: #2997ff;
 }
 
 /* --------------------------------------------------------------------------
@@ -311,36 +409,75 @@ a {
    -------------------------------------------------------------------------- */
 
 .footer {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 4rem auto 0;
-  padding: 1.75rem 1.5rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  border-top: 1px solid var(--border);
+  padding: 2.5rem 0 3rem;
+  background-color: var(--bg-alt);
+  border-top: 1px solid var(--hairline);
 }
 
-.footer p {
+.footer__line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem;
+  font-size: 12px;
+}
+
+.footer__line a {
+  color: var(--fg);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.footer__line a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.footer__line span {
+  color: var(--fg-secondary);
+}
+
+.footer__legal {
   margin: 0;
-  font-size: 0.8125rem;
-  color: var(--muted-2);
+  font-size: 12px;
+  line-height: 1.33337;
+  color: var(--fg-secondary);
 }
 
 /* --------------------------------------------------------------------------
-   Focus & motion
+   Focus, motion, small screens
    -------------------------------------------------------------------------- */
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-@media (max-width: 480px) {
-  .hero__actions .btn {
-    flex: 1 1 auto;
+.hero :focus-visible {
+  outline-color: #2997ff;
+}
+
+@media (max-width: 734px) {
+  .feature {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+  .feature__visual {
+    max-width: 220px;
+  }
+
+  .chips,
+  .cta--start {
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta .button {
+    flex: 1 1 100%;
   }
 }
 
