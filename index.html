@@ -3,61 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#08080a" />
+  <meta name="color-scheme" content="dark" />
 
   <title>OnlyNor — A personal website</title>
-  <meta name="description" content="A personal website for sharing projects, technical blogs, and learning notes." />
+  <meta name="description" content="Personal homepage of OnlyNor — projects, technical blog posts, and learning notes." />
   <meta name="author" content="OnlyNor" />
   <link rel="canonical" href="https://onlynor.github.io/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="OnlyNor — A personal website" />
-  <meta property="og:description" content="A personal website for sharing projects, technical blogs, and learning notes." />
+  <meta property="og:description" content="Personal homepage of OnlyNor — projects, technical blog posts, and learning notes." />
   <meta property="og:url" content="https://onlynor.github.io/" />
   <meta property="og:site_name" content="OnlyNor" />
+  <meta property="og:image" content="https://onlynor.github.io/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="OnlyNor — Projects, Blog, Notes" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="OnlyNor — A personal website" />
-  <meta name="twitter:description" content="A personal website for sharing projects, technical blogs, and learning notes." />
+  <meta name="twitter:description" content="Personal homepage of OnlyNor — projects, technical blog posts, and learning notes." />
+  <meta name="twitter:image" content="https://onlynor.github.io/assets/og.jpg" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+  <link rel="alternate" type="application/rss+xml" title="OnlyNor's blog" href="/blog/rss.xml" />
+  <link rel="preload" as="image" href="assets/wallpaper-960.avif" type="image/avif" media="(max-width: 960px)" />
+  <link rel="preload" as="image" href="assets/wallpaper.avif" type="image/avif" media="(min-width: 961px)" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://rsms.me/" crossorigin />
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 </head>
 <body>
-  <div class="bg-gradient" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="backdrop" aria-hidden="true"></div>
 
-  <main class="page">
-    <section class="hero">
+  <main class="page" id="main">
+    <header class="hero">
       <h1 class="hero__name">OnlyNor</h1>
-      <p class="hero__subtitle">A simple navigation page</p>
-      <p class="hero__desc">A personal website for sharing projects, technical blogs, and learning notes.</p>
+      <p class="hero__subtitle">Developer · building small things carefully</p>
+      <p class="hero__desc">
+        This is my home on the web: a place for projects I ship, notes I keep,
+        and the occasional write-up about how something actually works.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/blog/">
+          Read the blog
+          <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn" href="https://github.com/onlynor" rel="me noopener noreferrer" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <section class="sections" aria-labelledby="explore-heading">
+      <h2 class="section__title" id="explore-heading">Explore</h2>
+      <ul class="cards">
+        <li>
+          <a class="card" href="/blog/">
+            <span class="card__title">Blog</span>
+            <span class="card__desc">Technical write-ups, debugging notes, and things worth remembering.</span>
+            <span class="card__meta">onlynor.github.io/blog</span>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="/blog/archive/">
+            <span class="card__title">Archive</span>
+            <span class="card__desc">Every post, sorted by date — the fastest way to see what's here.</span>
+            <span class="card__meta">All posts</span>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="https://github.com/onlynor" rel="me noopener noreferrer" target="_blank">
+            <span class="card__title">GitHub</span>
+            <span class="card__desc">Source code, experiments, and whatever I'm currently tinkering with.</span>
+            <span class="card__meta">@onlynor ↗</span>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="/blog/rss.xml">
+            <span class="card__title">RSS</span>
+            <span class="card__desc">Subscribe to new posts in your own reader. No newsletter, no tracking.</span>
+            <span class="card__meta">rss.xml</span>
+          </a>
+        </li>
+      </ul>
     </section>
 
-    <nav class="nav" aria-label="Primary">
-      <a class="btn btn--primary" href="/blog/">Blog</a>
-      <a class="btn" href="#" data-placeholder="Projects" aria-disabled="true">Projects</a>
-      <a class="btn btn--icon" href="https://github.com/onlynor" target="_blank" rel="noopener noreferrer">
-        GitHub
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 7h10v2H7zM7 11h10v2H7zM7 15h6v2H7z"/></svg>
-      </a>
-      <a class="btn" href="#" data-placeholder="About" aria-disabled="true">About</a>
-    </nav>
-
-    <!-- Reserved slots for future sections: Resume, Projects, Blog, AI Agent, Contact, Tech Stack -->
-    <section class="sections" aria-label="More">
-      <!-- future cards go here -->
+    <section class="sections" aria-labelledby="projects-heading">
+      <h2 class="section__title" id="projects-heading">Projects</h2>
+      <p class="empty">
+        Nothing listed here yet. Work in progress lives on
+        <a href="https://github.com/onlynor" rel="noopener noreferrer" target="_blank">GitHub</a>
+        until it's ready to be written up.
+      </p>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© 2026 OnlyNor</p>
-    <p class="footer__hint">Built with GitHub Pages.</p>
+    <p>© <span id="year">2026</span> OnlyNor</p>
+    <p class="footer__hint">Static site on GitHub Pages. No trackers, no cookies.</p>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
