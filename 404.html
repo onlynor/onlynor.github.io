@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08080a" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="robots" content="noindex" />
+  <title>404 — Page not found | OnlyNor</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    /* Absolute asset paths: this page is served for URLs at any depth. */
+    .backdrop {
+      background-image: image-set(
+        url("/assets/wallpaper-960.avif") type("image/avif"),
+        url("/assets/wallpaper-960.jpg") type("image/jpeg")
+      );
+    }
+
+    @media (min-width: 961px) {
+      .backdrop {
+        background-image: image-set(
+          url("/assets/wallpaper.avif") type("image/avif"),
+          url("/assets/wallpaper.jpg") type("image/jpeg")
+        );
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <main class="page" id="main">
+    <header class="hero">
+      <h1 class="hero__name">404</h1>
+      <p class="hero__subtitle">This page doesn't exist.</p>
+      <p class="hero__desc">
+        The link may be outdated, or the page has moved. Try the homepage or the blog index.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/">
+          Go home
+          <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn" href="/blog/">Blog</a>
+      </div>
+    </header>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> OnlyNor</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
