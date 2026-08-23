@@ -3,109 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#08080a" />
-  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f5f7" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+  <meta name="color-scheme" content="light dark" />
 
-  <title>OnlyNor — A personal website</title>
-  <meta name="description" content="Personal homepage of OnlyNor — projects, technical blog posts, and learning notes." />
+  <title>OnlyNor</title>
+  <meta name="description" content="OnlyNor — developer. VibeMeter, a sentiment analysis dashboard for Chinese social platforms, plus notes and write-ups." />
   <meta name="author" content="OnlyNor" />
   <link rel="canonical" href="https://onlynor.github.io/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="OnlyNor — A personal website" />
-  <meta property="og:description" content="Personal homepage of OnlyNor — projects, technical blog posts, and learning notes." />
+  <meta property="og:title" content="OnlyNor" />
+  <meta property="og:description" content="OnlyNor — developer. VibeMeter, a sentiment analysis dashboard for Chinese social platforms, plus notes and write-ups." />
   <meta property="og:url" content="https://onlynor.github.io/" />
   <meta property="og:site_name" content="OnlyNor" />
   <meta property="og:image" content="https://onlynor.github.io/assets/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="OnlyNor — Projects, Blog, Notes" />
+  <meta property="og:image:alt" content="OnlyNor" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="OnlyNor — A personal website" />
-  <meta name="twitter:description" content="Personal homepage of OnlyNor — projects, technical blog posts, and learning notes." />
+  <meta name="twitter:title" content="OnlyNor" />
+  <meta name="twitter:description" content="OnlyNor — developer. VibeMeter, a sentiment analysis dashboard for Chinese social platforms, plus notes and write-ups." />
   <meta name="twitter:image" content="https://onlynor.github.io/assets/og.jpg" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/favicon.svg" />
   <link rel="alternate" type="application/rss+xml" title="OnlyNor's blog" href="/blog/rss.xml" />
-  <link rel="preload" as="image" href="assets/wallpaper-960.avif" type="image/avif" media="(max-width: 960px)" />
-  <link rel="preload" as="image" href="assets/wallpaper.avif" type="image/avif" media="(min-width: 961px)" />
+  <link rel="preload" as="image" href="assets/wallpaper-960.avif" type="image/avif" media="(max-width: 734px)" />
+  <link rel="preload" as="image" href="assets/wallpaper.avif" type="image/avif" media="(min-width: 735px)" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="backdrop" aria-hidden="true"></div>
 
-  <main class="page" id="main">
-    <header class="hero">
-      <h1 class="hero__name">OnlyNor</h1>
-      <p class="hero__subtitle">Developer · building small things carefully</p>
-      <p class="hero__desc">
-        This is my home on the web: a place for projects I ship, notes I keep,
-        and the occasional write-up about how something actually works.
-      </p>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="/blog/">
-          Read the blog
-          <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="btn" href="https://github.com/onlynor" rel="me noopener noreferrer" target="_blank">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-          GitHub
-        </a>
-      </div>
-    </header>
-
-    <section class="sections" aria-labelledby="explore-heading">
-      <h2 class="section__title" id="explore-heading">Explore</h2>
-      <ul class="cards">
-        <li>
-          <a class="card" href="/blog/">
-            <span class="card__title">Blog</span>
-            <span class="card__desc">Technical write-ups, debugging notes, and things worth remembering.</span>
-            <span class="card__meta">onlynor.github.io/blog</span>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="/blog/archive/">
-            <span class="card__title">Archive</span>
-            <span class="card__desc">Every post, sorted by date — the fastest way to see what's here.</span>
-            <span class="card__meta">All posts</span>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="https://github.com/onlynor" rel="me noopener noreferrer" target="_blank">
-            <span class="card__title">GitHub</span>
-            <span class="card__desc">Source code, experiments, and whatever I'm currently tinkering with.</span>
-            <span class="card__meta">@onlynor ↗</span>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="/blog/rss.xml">
-            <span class="card__title">RSS</span>
-            <span class="card__desc">Subscribe to new posts in your own reader. No newsletter, no tracking.</span>
-            <span class="card__meta">rss.xml</span>
-          </a>
-        </li>
+  <nav class="globalnav" aria-label="Global">
+    <div class="globalnav__inner">
+      <a class="globalnav__brand" href="/" aria-label="OnlyNor, home">OnlyNor</a>
+      <ul class="globalnav__list">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="https://github.com/onlynor" rel="me noopener noreferrer" target="_blank">GitHub</a></li>
       </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ================= Hero ================= -->
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">OnlyNor</h1>
+        <p class="hero__tagline">Developer. Building small, useful things.</p>
+        <div class="cta">
+          <a class="button" href="https://rtomc.com" rel="noopener noreferrer" target="_blank">Try VibeMeter</a>
+          <a class="chevron chevron--onDark" href="#projects">Learn more</a>
+        </div>
+      </div>
     </section>
 
-    <section class="sections" aria-labelledby="projects-heading">
-      <h2 class="section__title" id="projects-heading">Projects</h2>
-      <p class="empty">
-        Nothing listed here yet. Work in progress lives on
-        <a href="https://github.com/onlynor" rel="noopener noreferrer" target="_blank">GitHub</a>
-        until it's ready to be written up.
-      </p>
+    <!-- ================= Projects ================= -->
+    <section class="section section--alt" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <p class="eyebrow">Projects</p>
+        <h2 class="section__title" id="projects-title">VibeMeter</h2>
+        <p class="section__lede">Sentiment analysis for Chinese social platforms.</p>
+
+        <article class="feature">
+          <div class="feature__visual" aria-hidden="true">
+            <svg viewBox="0 0 240 150" role="img" focusable="false">
+              <defs>
+                <linearGradient id="arc" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#ff453a" />
+                  <stop offset="50%" stop-color="#ffd60a" />
+                  <stop offset="100%" stop-color="#30d158" />
+                </linearGradient>
+              </defs>
+              <path d="M30 120 A 90 90 0 0 1 210 120" fill="none" stroke="currentColor" stroke-opacity="0.14" stroke-width="18" stroke-linecap="round" />
+              <path d="M30 120 A 90 90 0 0 1 210 120" fill="none" stroke="url(#arc)" stroke-width="18" stroke-linecap="round" stroke-dasharray="196 283" />
+              <g transform="rotate(38 120 120)">
+                <line x1="120" y1="120" x2="120" y2="52" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+              </g>
+              <circle cx="120" cy="120" r="9" fill="currentColor" />
+            </svg>
+          </div>
+
+          <div class="feature__body">
+            <p class="feature__text">
+              Collects public comments from Bilibili, Weibo, Douban, Zhihu and Tieba by
+              keyword, then cleans, tokenises and scores them. One dashboard shows the
+              sentiment split, an opinion word cloud, and the comments that actually
+              represent each side.
+            </p>
+            <ul class="chips">
+              <li>FastAPI</li>
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>SnowNLP</li>
+              <li>ECharts</li>
+            </ul>
+            <div class="cta cta--start">
+              <a class="button" href="https://rtomc.com" rel="noopener noreferrer" target="_blank">Open rtomc.com</a>
+              <a class="chevron" href="https://github.com/onlynor/vibemeter" rel="noopener noreferrer" target="_blank">View source on GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
+
+    <!-- ================= Blog ================= -->
+    <section class="section" id="blog" aria-labelledby="blog-title">
+      <div class="wrap wrap--center">
+        <p class="eyebrow">Writing</p>
+        <h2 class="section__title" id="blog-title">Blog</h2>
+        <p class="section__lede">Notes, debugging stories, and the occasional deep dive.</p>
+        <p class="cta cta--center">
+          <a class="chevron chevron--lg" href="/blog/">Read the blog</a>
+        </p>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
-    <p>© <span id="year">2026</span> OnlyNor</p>
-    <p class="footer__hint">Static site on GitHub Pages. No trackers, no cookies.</p>
+    <div class="wrap">
+      <p class="footer__line">
+        <a href="https://github.com/onlynor" rel="me noopener noreferrer" target="_blank">GitHub</a>
+        <span aria-hidden="true">·</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">·</span>
+        <a href="/blog/rss.xml">RSS</a>
+      </p>
+      <p class="footer__legal">Copyright © <span id="year">2026</span> OnlyNor. Static site on GitHub Pages — no trackers, no cookies.</p>
+    </div>
   </footer>
 
   <script>
