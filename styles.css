@@ -462,86 +462,6 @@ main {
 }
 
 /* --------------------------------------------------------------------------
-   Blog post card
-   -------------------------------------------------------------------------- */
-
-.post-card {
-  margin-top: 2.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: clamp(1.5rem, 3.5vw, 2.25rem);
-  background-color: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  text-decoration: none;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-}
-
-.post-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--card-border-strong);
-  box-shadow: var(--shadow-lg);
-}
-
-.post-card__meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.004em;
-  color: var(--fg-secondary);
-}
-
-.post-card__dot {
-  color: var(--card-border-strong);
-}
-
-.post-card__title {
-  margin: 0.5rem 0 0;
-  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--fg);
-  text-wrap: pretty;
-}
-
-.post-card:hover .post-card__title {
-  color: var(--accent);
-}
-
-.post-card__desc {
-  margin: 0.35rem 0 0;
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--fg-secondary);
-  text-wrap: pretty;
-}
-
-.post-card__arrow {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background-color: var(--chip-bg);
-  color: var(--accent);
-  transition: transform var(--transition), background-color var(--transition), color var(--transition);
-}
-
-.post-card:hover .post-card__arrow {
-  transform: translateX(3px);
-  background-color: var(--accent);
-  color: var(--on-accent);
-}
-
-/* --------------------------------------------------------------------------
    Scroll reveal
    -------------------------------------------------------------------------- */
 
@@ -625,10 +545,6 @@ main {
   .chips,
   .cta--start {
     justify-content: center;
-  }
-
-  .post-card {
-    align-items: flex-start;
   }
 }
 
